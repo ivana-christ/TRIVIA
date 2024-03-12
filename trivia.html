@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="trivia.css">
+  <title>TRIVIA</title>
+</head>
+
+<body>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      let correct = document.querySelector('.correct')
+      correct.addEventListener('click', function () {
+        correct.style.backgroundColor = 'green'
+        document.querySelector('#feedback1').innerHTML = 'Correct!'
+      })
+
+      let incorrects = document.querySelectorAll('.incorrect')
+      for (let i = 0; i < incorrects.length; i++) {
+        incorrects[i].addEventListener('click', function () {
+          incorrects[i].style.backgroundColor = 'red'
+          document.querySelector('#feedback1').innerHTML = 'Incorrect!'
+        })
+      }
+
+      document.querySelector('#check').addEventListener('click', function () {
+        let input = document.querySelector('input')
+        if (input.value === 'Switzerland' || input.value === 'switzerland') {
+          input.style.backgroundColor = 'green'
+          document.querySelector('#feedback2').innerHTML = 'Correct!'
+        }
+        else if(input.value === '') {
+          document.querySelector('#feedback2').innerHTML = 'You should answer the question'
+        }
+        else {
+          input.style.backgroundColor = 'red'
+          document.querySelector('#feedback2').innerHTML = 'Incorrect!'
+        }
+      })
+    })
+  </script>
+
+  <div class="header">
+    <h1>Trivia!</h1>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <h2>Part 1: Multiple Choice </h2>
+      <h3>Wich country is the most populous in the world?</h3>
+      <button class="incorrect">China</button>
+      <button class="correct"> India </button>
+      <button class="incorrect">United States</button>
+      <p id="feedback1"></p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+      <h2>Part 2: Free Response</h2>
+      <h3>In wich country is it illegal to own only one guinea pig?</h3>
+      <input type="text" ></input>
+      <button id="check">Check Answer</button>
+      <p id="feedback2"></p>
+    </div>
+  </div>
+</body>
+
+</html>
